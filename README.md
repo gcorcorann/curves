@@ -43,3 +43,4 @@ Chaikin's Curve
 - Add B-splines
 - Operator overloading for img, i.e. img[i, j]
 - Address float -> int casting
+- Address memory cleanup

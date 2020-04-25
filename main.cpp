@@ -3,77 +3,7 @@
 #include <iostream>
 
 #include "../raytracing/image.h"
-
-struct Point {
-    int x;
-    int y;
-};
-
-struct Point2f {
-    float x;
-    float y;
-};
-
-Point* calculate(Point p0, Point p1, int& numels) {
-    int dx = p1.x - p0.x;
-    numels = dx + 1;
-    Point* points = new Point[numels];
-    float m = (float) (p1.y - p0.y) / dx;
-    for (int i = p0.x; i < p1.x + 1; i++) {
-        points[i - p0.x] = {i, (int) round((m * (float) (i - p0.x) + p0.y))};
-    }
-    return points;
-}
-
-Point* bresenhamLine(Point p0, Point p1, int& numels) {
-    int dx = abs(p1.x - p0.x);
-    int dy = abs(p1.y - p0.y);
-    Point* pts = nullptr;
-    Point pn0, pn1;
-
-    if (dy > dx) {
-        if (p0.y > p1.y) {
-            pn0 = {p1.y, p1.x};
-            pn1 = {p0.y, p0.x};
-        }
-        else {
-            pn0 = {p0.y, p0.x};
-            pn1 = {p1.y, p1.x};
-        }
-        pts = calculate(pn0, pn1, numels);
-        for (int i = 0; i < numels; i++) {
-            pts[i] = {pts[i].y, pts[i].x};
-        }
-        if (p0.y > p1.y) {
-            Point tmp;
-            for (int i = 0; i < numels / 2; i++) {
-                tmp = pts[i];
-                pts[i] = {pts[numels - 1 - i].x, pts[numels - 1 - i].y};
-                pts[numels - 1 - i] = {tmp.x, tmp.y};
-            }
-        }
-    }
-    else {
-        if (p0.x > p1.x) {
-            pn0 = {p1.x, p1.y};
-            pn1 = {p0.x, p0.y};
-        }
-        else {
-            pn0 = {p0.x, p0.y};
-            pn1 = {p1.x, p1.y};
-        }
-        pts = calculate(pn0, pn1, numels);
-        if (p0.x > p1.x) {
-            Point tmp;
-            for (int i = 0; i < numels / 2; i++) {
-                tmp = pts[i];
-                pts[i] = {pts[numels - 1 - i].x, pts[numels - 1 - i].y};
-                pts[numels - 1 - i] = {tmp.x, tmp.y};
-            }
-        }
-    }
-    return pts;
-}
+#include "algorithms.h"
 
 void printPoints(Point pts [], int numels) {
     for (int i = 0; i < numels; i++) {
@@ -141,9 +71,10 @@ void drawLine(Point p0, Point p1, Image& img) {
 }
 
 void drawLines(Point2f pts [], int numels, Image& img) {
+    Point p0, p1;
     for (int i = 0; i < numels - 1; i++) {
-        Point p0 = {pts[i].x, pts[i].y};
-        Point p1 = {pts[i + 1].x, pts[i + 1].y};
+        p0 = {(int) round(pts[i].x), (int) round(pts[i].y)};
+        p1 = {(int) round(pts[i + 1].x), (int) round(pts[i + 1].y)};
         drawLine(p0, p1, img);
     }
 }
