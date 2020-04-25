@@ -12,7 +12,7 @@ $$\frac{(y - y_0)}{ (y_1 - y_0)} = \frac{(x - x_0)}{ (x_1 - x_0)}$$
 
 $$ y = \frac{(y_1 - y_0)}{(x_1 - x_0)} (x - x_0) + y_0$$
 
-- In practice, this devised method only works for positive and bounded slope $(0 <= m < ing)$ and increase *x* $(x_1 > x_0)$
+- In practice, this devised method only works for positive and bounded slope $(0 <= m < inf)$ and increase *x* $(x_1 > x_0)$
 
 - In order for this to work for all cases, it is important to check for the change in *x* and *y* values and choose the larger of the two
 
