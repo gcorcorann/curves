@@ -22,3 +22,5 @@ $$ y = \frac{(y_1 - y_0)}{(x_1 - x_0)} (x - x_0) + y_0$$
 
 ## TODO
 - Add B-splines
+- Operator overloading for img, i.e. img[i, j]
+- Address float -> int casting

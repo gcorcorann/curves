@@ -9,6 +9,11 @@ struct Point {
     int y;
 };
 
+struct Point2f {
+    float x;
+    float y;
+};
+
 Point* calculate(Point p0, Point p1, int& numels) {
     int dx = p1.x - p0.x;
     numels = dx + 1;
@@ -77,10 +82,12 @@ void printPoints(Point pts [], int numels) {
     std::cout << std::endl;
 }
 
-void test(Point p0, Point p1, Point r []) {
+void test(Point p0, Point p1, Point r [], bool print = false) {
     int numels;
     Point* pts = bresenhamLine(p0, p1, numels);
-    printPoints(pts, numels);
+    if (print) {
+        printPoints(pts, numels);
+    }
     for (int i = 0; i < numels; i++) {
         assert(pts[i].x == r[i].x);
         assert(pts[i].y == r[i].y);
@@ -133,25 +140,59 @@ void drawLine(Point p0, Point p1, Image& img) {
     }
 }
 
+void drawLines(Point2f pts [], int numels, Image& img) {
+    for (int i = 0; i < numels - 1; i++) {
+        Point p0 = {pts[i].x, pts[i].y};
+        Point p1 = {pts[i + 1].x, pts[i + 1].y};
+        drawLine(p0, p1, img);
+    }
+}
+
+/*
+ * Following function takes a list of sorted control points
+ * to which a Chaikin curve is to be drawn.
+ * Returns an array of new control points and modifies numels
+ * to return number of new control points.
+ */
+Point2f* chaikinCurve(Point2f pts [], int& numels) {
+    int num_pts = numels;
+    numels = (numels - 1) * 2;
+    Point2f* ctr_pts = new Point2f [numels];
+    for (int i = 0; i < num_pts - 1; i++) {
+        float vx, vy;
+        vx = pts[i + 1].x - pts[i].x;
+        vy = pts[i + 1].y - pts[i].y;
+        ctr_pts[i * 2] = {pts[i].x + 0.25f * vx, pts[i].y + 0.25f * vy};
+        ctr_pts[i * 2 + 1] = {pts[i].x + 0.75f * vx, pts[i].y + 0.75f * vy};
+    }
+    return ctr_pts;
+}
+
+void drawCurve(Point2f pts [], int numels, Image& img, int depth = 0) {
+    if (depth >= 5) {
+        drawLines(pts, numels, img);
+        return;
+    }
+    Point2f* ctl_pts = chaikinCurve(pts, numels);
+    drawCurve(ctl_pts, numels, img, ++depth);
+}
+
+void render (int width, int height) {
+    Image img {width, height};
+    int numels = 5;
+    Point2f pts [numels] = {{10.f, 10.f}, {10.f, 50.f}, {50.f, 90.f},
+                            {90.f, 50.f}, {90.f, 10.f}};
+    drawCurve(pts, numels, img);
+    Point2f lpts [] = {{10, 10}, {10, 90}, {90, 90}, {90, 10}, {10, 10}};
+    drawLines(lpts, 5, img);
+    img.write();
+}
+
 int main() {
     std::cout << "Running tests." << std::endl;
     run_tests();
     int width = 100;
     int height = 100;
-    Image img {width, height};
-    // TODO operator overlaoding for thie img[i, j]
-    // TODO constructor all zeros
-    for (int j = 0; j < height; j++) {
-        for (int i = 0; i < width; i++) {
-            *img[j * width + i] = {0, 0, 0};
-        }
-    }
-    drawLine({10, 10}, {10, 90}, img);
-    drawLine({10, 90}, {90, 90}, img);
-    drawLine({90, 90}, {90, 10}, img);
-    drawLine({90, 10}, {10, 10}, img);
-    drawLine({10, 10}, {90, 90}, img);
-    drawLine({10, 90}, {90, 10}, img);
-    img.write();
+    render(width, height);
     return 0;
 }
