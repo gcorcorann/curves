@@ -33,3 +33,6 @@
 
 # Images
 *.ppm
+
+# OSX
+.DS_Store

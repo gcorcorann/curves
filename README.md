@@ -33,11 +33,11 @@
 # Images
 Bresenham's Line
 
-![alt text](https://github.com/gcorcorann/curves/blob/master/out.png)
+![alt text](https://github.com/gcorcorann/curves/blob/master/lines.png)
 
 Chaikin's Curve
 
-![alt text](https://github.com/gcorcorann/curves/blob/master/curve.png)
+![alt text](https://github.com/gcorcorann/curves/blob/master/curves.png)
 
 # TODO
 - Add B-splines
