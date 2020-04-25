@@ -17,3 +17,5 @@ $$ y = \frac{(y_1 - y_0)}{(x_1 - x_0)} (x - x_0) + y_0$$
 - In order for this to work for all cases, it is important to check for the change in *x* and *y* values and choose the larger of the two
 
 - Whichever value is larger will be your iterable, i.e. if $\delta y > \delta x$, you will step through the values of *y* and solve for the values of *x*
+
+![alt text](https://github.com/gcorcorann/curves/blob/master/out.png)
