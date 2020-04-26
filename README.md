@@ -44,3 +44,4 @@ Chaikin's Curve
 - Operator overloading for img, i.e. img[i, j]
 - Address float -> int casting
 - Address memory cleanup
+- Add drawing rectangles (topleft, botright) & enclosed lines
