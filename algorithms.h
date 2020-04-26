@@ -47,11 +47,22 @@ void reverseArray(Point pts [], int numels) {
     }
 }
 
-// TODO fix for single point (i.e. numels == 1 || dx && dx == 0)
+/*
+ * Bresenham's line drawing algorithm. Draw line from
+ * point p0 to p0 and return pointer to array of points
+ * along the line. Numels reflects the number of points.
+ */
 Point* bresenhamLine(Point p0, Point p1, int& numels) {
-    Point* pts = nullptr;
     int dx = p1.x - p0.x;
     int dy = p1.y - p0.y;
+    if (dx == 0 && dy == 0) {
+        numels = 1;
+        Point* pt =  new Point;
+        pt->x = p0.x;
+        pt->y = p0.y;
+        return pt;
+    }
+    Point* pts = nullptr;
     if (abs(dy) > abs(dx)) {
         if (dy < 0) {
             pts = calculate({p1.y, p1.x}, {p0.y, p0.x}, numels);

@@ -60,6 +60,10 @@ void run_tests() {
     Point r6 [] = {{10, 11}, {9, 10}, {8, 9}, {7, 8}, {6, 7}, {6, 6},
                    {5, 5}, {4, 4}, {3, 3}, {2, 2}, {1, 1}};
     test(p0, p1, r6);
+    p0 = {2, 1};
+    p1 = {2, 1};
+    Point r7 [] = {{2, 1}};
+    test(p0, p1, r7);
 }
 
 void drawLine(Point p0, Point p1, Image& img) {
