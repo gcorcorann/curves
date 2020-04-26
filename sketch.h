@@ -12,10 +12,16 @@ private:
     int m_height;
     Vector m_bg = {0.f, 0.f, 0.f};
     Vector m_fg = {1.f, 1.f, 1.f};
+    Image img {m_width, m_height};
 public:
     Sketch(int width, int height) : m_width(width), m_height(height) { }
     void setBackgroundColour(Vector colour) {
         m_bg = colour;
+        for (int j = 0; j < m_height; j++) {
+            for (int i = 0; i < m_width; i++) {
+                *img[j * m_width + i] = m_bg;
+            }
+        }
     }
     void setDrawColour(Vector colour) {
         m_fg = colour;
@@ -24,12 +30,6 @@ public:
      * Every call to draw writes image to disk.
      */
     void draw(Point pts [], int numels) {
-        Image img {m_width, m_height};
-        for (int j = 0; j < m_height; j++) {
-            for (int i = 0; i < m_width; i++) {
-                *img[j * m_width + i] = m_bg;
-            }
-        }
         drawPiecewise(pts, numels, img);
         img.write();
     }

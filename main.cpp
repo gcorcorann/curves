@@ -126,15 +126,64 @@ void render (int width, int height) {
 }
 
 int main() {
-    Point head [] {{10, 10}, {10, 90}, {90, 90}, {90, 10}, {10, 10}};
-    int numels = sizeof(head) / sizeof(*head);
-    int width = 100;
-    int height = 100;
+    int width = 800;
+    int height = 700;
+
+    Point head [] {{250, 300}, {250, 500}, {550, 500}, {550, 300}, {250, 300}};
+    int nhead = sizeof(head) / sizeof(*head);
+
+    Point hat [] {{300, 500}, {400, 650}, {500, 500}, {300, 500}};
+    int nhat = sizeof(hat) / sizeof(*hat);
+
+    Point left_ear [] {{275, 500}, {225, 600}, {250, 600}, {300, 500}, {275, 500}};
+    int nleft_ear = sizeof(left_ear) / sizeof(*left_ear);
+
+    Point right_ear [] {{500, 500}, {550, 600}, {575, 600}, {525, 500}, {500, 500}};
+    int nright_ear = sizeof(right_ear) / sizeof(*right_ear);
+
+    Point left_eye [] {{325, 425}, {325, 475}, {375, 475}, {375, 425}, {325, 425}};
+    int nleft_eye = sizeof(left_eye) / sizeof(*left_eye);
+
+    Point right_eye [] {{425, 425}, {425, 475}, {475, 475}, {475, 425}, {425, 425}};
+    int nright_eye = sizeof(right_eye) / sizeof(*right_eye);
+
+    Point mouth [] {{350, 325}, {350, 375}, {450, 375}, {450, 325}, {350, 325}};
+    int nmouth = sizeof(mouth) / sizeof(*mouth);
+
+    Point body [] {{325, 175}, {325, 300}, {475, 300}, {475, 175}, {325, 175}};
+    int nbody = sizeof(body) / sizeof(*body);
+
+    Point hips [] {{325, 100}, {325, 175}, {475, 175}, {475, 100}, {325, 100}};
+    int nhips = sizeof(hips) / sizeof(*hips);
+
+    Point left_leg [] {{250, 50}, {250, 150}, {325, 150}, {325, 50}, {250, 50}};
+    int nleft_leg = sizeof(left_leg) / sizeof(*left_leg);
+
+    Point right_leg [] {{550, 50}, {550, 150}, {475, 150}, {475, 50}, {550, 50}};
+    int nright_leg = sizeof(right_leg) / sizeof(*right_leg);
+
+    Point left_arm [] {{325, 300}, {275, 300}, {175, 225}, {200, 200}, {325, 300}};
+    int nleft_arm = sizeof(left_arm) / sizeof(*left_arm);
+
+    Point right_arm [] {{475, 300}, {525, 300}, {625, 225}, {600, 200}, {475, 300}};
+    int nright_arm = sizeof(right_arm) / sizeof(*right_arm);
  
     Sketch sketch {width, height};
     sketch.setBackgroundColour({0.f, 0.f, 0.f});
-    sketch.setDrawColour({1.f, 1.f, 1.f});
-    sketch.draw(head, numels);
+    sketch.setDrawColour({1.f, 0.f, 0.f});
+    sketch.draw(head, nhead);
+    sketch.draw(hat, nhat);
+    sketch.draw(left_ear, nleft_ear);
+    sketch.draw(right_ear, nright_ear);
+    sketch.draw(left_eye, nleft_eye);
+    sketch.draw(right_eye, nright_eye);
+    sketch.draw(mouth, nmouth);
+    sketch.draw(body, nbody);
+    sketch.draw(hips, nhips);
+    sketch.draw(left_leg, nleft_leg);
+    sketch.draw(right_leg, nright_leg);
+    sketch.draw(left_arm, nleft_arm);
+    sketch.draw(right_arm, nright_arm);
     return 0;
 
 
