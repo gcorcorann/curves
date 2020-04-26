@@ -5,6 +5,8 @@
 #include "../raytracing/image.h"
 #include "algorithms.h"
 
+#include "sketch.h"
+
 void printPoints(Point pts [], int numels) {
     for (int i = 0; i < numels; i++) {
         std::cout << "(" << pts[i].x << ", " << pts[i].y << ")" << std::endl;
@@ -124,10 +126,20 @@ void render (int width, int height) {
 }
 
 int main() {
-    std::cout << "Running tests." << std::endl;
-    run_tests();
+    Point head [] {{10, 10}, {10, 90}, {90, 90}, {90, 10}, {10, 10}};
+    int numels = sizeof(head) / sizeof(*head);
     int width = 100;
     int height = 100;
+ 
+    Sketch sketch {width, height};
+    sketch.setBackgroundColour({0.f, 0.f, 0.f});
+    sketch.setDrawColour({1.f, 1.f, 1.f});
+    sketch.draw(head, numels);
+    return 0;
+
+
+    std::cout << "Running tests." << std::endl;
+    run_tests();
     render(width, height);
     return 0;
 }
