@@ -39,9 +39,6 @@ public:
     void setDrawColour(Vector colour) {
         m_fg = colour;
     }
-    /*
-     * Every call to draw writes image to disk.
-     */
     void draw(Point pts [], int numels) {
         drawPiecewise(pts, numels);
     }
@@ -59,6 +56,7 @@ public:
         }
     }
     void drawCurve(Point2f pts[], int numels, bool enclosed) {
+        // if curve is enclosed, add the first and second point to the end of array
         int numpts = numels;
         if (enclosed) {
             numpts += 2;

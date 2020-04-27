@@ -3,15 +3,41 @@
 void renderElephant () {
     int width = 600;
     int height = 800;
-    Point2f ear [] = {{75.f, 700.f}, {250.f, 700.f}, {250.f, 500.f},
-                      {75.f, 500.f}};
+    Point2f ear [] {{75.f, 705.f}, {250.f, 695.f}, {245.f, 495.f}, {70.f, 505.f}};
     int near = sizeof(ear) / sizeof(*ear);
-    Point2f head [] = {{150.f, 700.f}, {375.f, 700.f}, {375.f, 550.f},
-                       {150.f, 550.f}};
+    Point2f head [] {{150.f, 700.f}, {375.f, 700.f}, {375.f, 550.f}, {150.f, 550.f}};
     int nhead = sizeof(head) / sizeof(*head);
+    Point2f eye [] {{325.f, 675.f}, {350.f, 675.f}, {350.f, 600.f}, {325.f, 600.f}};
+    int neye = sizeof(eye) / sizeof(*eye);
+    Point2f iris [] {{325.f, 647.5f}, {335.f, 647.5f}, {335.f, 627.5f}, {325.f, 627.5f}};
+    int niris = sizeof(iris) / sizeof(*iris);
+    Point2f mouth [] {{300.f, 604.f}, {300.f, 565.f}, {325.f, 565.f}};
+    int nmouth = sizeof(mouth) / sizeof(*mouth);
+    Point2f cheek [] {{285.f, 620.f}, {285.f, 585.f}, {315.f, 585.f}, {315.f, 620.f}};
+    int ncheek = sizeof(cheek) / sizeof(*cheek);
+    Point2f eyebrow [] {{315.f, 660.f}, {315.f, 705.f}, {350.f, 705.f}, {339.f, 665.f}};
+    int neyebrow = sizeof(eyebrow) / sizeof(*eyebrow);
+    Point2f trunkbot [] {{325.f, 570.f}, {380.f, 575.f}, {440.f, 540.f}, {455.f, 500.f}};
+    int ntrunkbot = sizeof(trunkbot) / sizeof(*trunkbot);
+    Point2f trunktop [] {{350.f, 615.f}, {400.f, 605.f}, {465.f, 560.f}, {490.f, 500.f}};
+    int ntrunktop = sizeof(trunktop) / sizeof(*trunktop);
+    Point2f trunknose [] {{446.f, 523.f}, {491.f, 532.f}, {491.f, 500.f}, {446.f, 490.f}};
+    int ntrunknose = sizeof(trunknose) / sizeof(*trunknose);
+    Point2f body [] {{200.f, 550.f}, {300.f, 550.f}, {380.f, 390.f}, {250.f, 300.f}, {120.f, 390.f}};
+    int nbody = sizeof(body) / sizeof(*body);
+
     Sketch sketch {width, height};
     sketch.drawCurve(ear, near, true);
     sketch.drawCurve(head, nhead, true);
+    sketch.drawCurve(eye, neye, true);
+    sketch.drawCurve(iris, niris, true);
+    sketch.drawCurve(mouth, nmouth, false);
+    sketch.drawCurve(cheek, ncheek, false);
+    sketch.drawCurve(eyebrow, neyebrow, false);
+    sketch.drawCurve(trunkbot, ntrunkbot, false);
+    sketch.drawCurve(trunktop, ntrunktop, false);
+    sketch.drawCurve(trunknose, ntrunknose, true);
+    sketch.drawCurve(body, nbody, true);
     sketch.write();
 }
 
