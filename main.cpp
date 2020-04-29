@@ -4,52 +4,41 @@ void renderElephant () {
     int width = 600;
     int height = 800;
     Point2f ear [] {{85.f, 705.f}, {240.f, 695.f}, {235.f, 495.f}, {80.f, 505.f}};
-    int near = sizeof(ear) / sizeof(*ear);
     Point2f head [] {{150.f, 700.f}, {375.f, 700.f}, {375.f, 550.f}, {150.f, 550.f}};
-    int nhead = sizeof(head) / sizeof(*head);
     Point2f eye [] {{325.f, 675.f}, {350.f, 675.f}, {350.f, 600.f}, {325.f, 600.f}};
-    int neye = sizeof(eye) / sizeof(*eye);
     Point2f iris [] {{325.f, 647.5f}, {335.f, 647.5f}, {335.f, 627.5f}, {325.f, 627.5f}};
-    int niris = sizeof(iris) / sizeof(*iris);
     Point2f mouth [] {{300.f, 604.f}, {300.f, 565.f}, {325.f, 565.f}};
-    int nmouth = sizeof(mouth) / sizeof(*mouth);
     Point2f cheek [] {{285.f, 620.f}, {285.f, 585.f}, {315.f, 585.f}, {315.f, 620.f}};
-    int ncheek = sizeof(cheek) / sizeof(*cheek);
     Point2f eyebrow [] {{315.f, 660.f}, {315.f, 705.f}, {350.f, 705.f}, {339.f, 665.f}};
-    int neyebrow = sizeof(eyebrow) / sizeof(*eyebrow);
     Point2f trunkbot [] {{325.f, 570.f}, {380.f, 575.f}, {440.f, 540.f}, {455.f, 500.f}};
-    int ntrunkbot = sizeof(trunkbot) / sizeof(*trunkbot);
     Point2f trunktop [] {{350.f, 615.f}, {400.f, 605.f}, {465.f, 560.f}, {490.f, 500.f}};
-    int ntrunktop = sizeof(trunktop) / sizeof(*trunktop);
     Point2f trunknose [] {{446.f, 523.f}, {491.f, 532.f}, {491.f, 500.f}, {446.f, 490.f}};
-    int ntrunknose = sizeof(trunknose) / sizeof(*trunknose);
     Point2f tline1 [] {{403.f, 565.f}, {408.f, 585.f}, {433.f, 595.f}};
-    int ntline1 = sizeof(tline1) / sizeof(*tline1);
-    Point2f tline2 [] {{415.f, 565.f}, {420.f, 580.f}, {440.f, 590.5f}};
-    int ntline2 = sizeof(tline2) / sizeof(*tline2);
+    Point2f tline2 [] {{415.f, 565.f}, {420.f, 580.f}, {441.f, 588.5f}};
     Point2f body [] {{200.f, 550.f}, {300.f, 550.f}, {380.f, 390.f}, {250.f, 300.f}, {120.f, 390.f}};
-    int nbody = sizeof(body) / sizeof(*body);
     Point2f arm [] {{196.f, 505.f}, {265.f, 505.f}, {300.f, 395.f}, {230.f, 370.f}, {160.f, 395.f}};
-    int narm = sizeof(arm) / sizeof(*arm);
     Point2f rleg [] {{300.f, 425.f}, {440.f, 410.f}, {430.f, 310.f}, {290.f, 330.f}};
-    int nrleg = sizeof(rleg) / sizeof(*rleg);
+
+    Part parts [] {{ear, sizeof(ear) / sizeof(*ear), true},
+                   {head, sizeof(head) / sizeof(*head), true},
+                   {eye, sizeof(eye) / sizeof(*eye), true},
+                   {iris, sizeof(iris) / sizeof(*iris), true},
+                   {mouth, sizeof(mouth) / sizeof(*mouth), false},
+                   {cheek, sizeof(cheek) / sizeof(*cheek), false},
+                   {eyebrow, sizeof(eyebrow) / sizeof(*eyebrow), false},
+                   {trunkbot, sizeof(trunkbot) / sizeof(*trunkbot), false},
+                   {trunktop, sizeof(trunktop) / sizeof(*trunktop), false},
+                   {trunknose, sizeof(trunknose) / sizeof(*trunknose), true},
+                   {tline1, sizeof(tline1) / sizeof(*tline1), false},
+                   {tline2, sizeof(tline2) / sizeof(*tline2), false},
+                   {body, sizeof(body) / sizeof(*body), true},
+                   {arm, sizeof(arm) / sizeof(*arm), true},
+                   {rleg, sizeof(rleg) / sizeof(*rleg), true}};
 
     Sketch sketch {width, height};
-    sketch.drawCurve(ear, near, true);
-    sketch.drawCurve(head, nhead, true);
-    sketch.drawCurve(eye, neye, true);
-    sketch.drawCurve(iris, niris, true);
-    sketch.drawCurve(mouth, nmouth, false);
-    sketch.drawCurve(cheek, ncheek, false);
-    sketch.drawCurve(eyebrow, neyebrow, false);
-    sketch.drawCurve(trunkbot, ntrunkbot, false);
-    sketch.drawCurve(trunktop, ntrunktop, false);
-    sketch.drawCurve(trunknose, ntrunknose, true);
-    sketch.drawCurve(tline1, ntline1, false);
-    sketch.drawCurve(tline2, ntline2, false);
-    sketch.drawCurve(body, nbody, true);
-    sketch.drawCurve(arm, narm, true);
-    sketch.drawCurve(rleg, nrleg, true);
+    for (int i = 0; i < sizeof(parts) / sizeof(*parts); i++) {
+        sketch.drawCurve(parts[i]);
+    }
     sketch.write();
 }
 

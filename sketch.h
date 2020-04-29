@@ -4,6 +4,12 @@
 #include "../raytracing/image.h"
 #include "../raytracing/vector.h"
 
+struct Part {
+    Point2f* pts;
+    int npts;
+    bool closed;
+};
+
 class Sketch {
 private:
     int m_width;
@@ -55,20 +61,19 @@ public:
             drawLine(pts[i], pts[i + 1]);
         }
     }
-    void drawCurve(Point2f pts[], int numels, bool enclosed) {
+    void drawCurve(Part part) {
         // if curve is enclosed, add the first and second point to the end of array
-        int numpts = numels;
-        if (enclosed) {
-            numpts += 2;
+        if (part.closed) {
+            Point2f pts [part.npts + 2];
+            for (int i = 0; i < part.npts; i++) {
+                pts[i] = {part.pts[i].x, part.pts[i].y};
+            }
+            pts[part.npts] = {pts[0].x, pts[0].y};
+            pts[part.npts + 1] = {pts[1].x, pts[1].y};
+            _drawCurve(pts, part.npts + 2);
         }
-        Point2f npts [numpts];
-        for (int i = 0; i < numels; i++) {
-            npts[i] = {pts[i].x, pts[i].y};
+        else {
+            _drawCurve(part.pts, part.npts);
         }
-        if (enclosed) {
-            npts[numels] = {pts[0].x, pts[0].y};
-            npts[numels + 1] = {pts[1].x, pts[1].y};
-        }
-        _drawCurve(npts, numpts);
     }
 };
