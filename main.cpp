@@ -3,7 +3,7 @@
 void renderElephant () {
     int width = 600;
     int height = 800;
-    Point2f ear [] {{75.f, 705.f}, {250.f, 695.f}, {245.f, 495.f}, {70.f, 505.f}};
+    Point2f ear [] {{85.f, 705.f}, {240.f, 695.f}, {235.f, 495.f}, {80.f, 505.f}};
     int near = sizeof(ear) / sizeof(*ear);
     Point2f head [] {{150.f, 700.f}, {375.f, 700.f}, {375.f, 550.f}, {150.f, 550.f}};
     int nhead = sizeof(head) / sizeof(*head);
@@ -23,8 +23,16 @@ void renderElephant () {
     int ntrunktop = sizeof(trunktop) / sizeof(*trunktop);
     Point2f trunknose [] {{446.f, 523.f}, {491.f, 532.f}, {491.f, 500.f}, {446.f, 490.f}};
     int ntrunknose = sizeof(trunknose) / sizeof(*trunknose);
+    Point2f tline1 [] {{403.f, 565.f}, {408.f, 585.f}, {433.f, 595.f}};
+    int ntline1 = sizeof(tline1) / sizeof(*tline1);
+    Point2f tline2 [] {{415.f, 565.f}, {420.f, 580.f}, {440.f, 590.5f}};
+    int ntline2 = sizeof(tline2) / sizeof(*tline2);
     Point2f body [] {{200.f, 550.f}, {300.f, 550.f}, {380.f, 390.f}, {250.f, 300.f}, {120.f, 390.f}};
     int nbody = sizeof(body) / sizeof(*body);
+    Point2f arm [] {{196.f, 505.f}, {265.f, 505.f}, {300.f, 395.f}, {230.f, 370.f}, {160.f, 395.f}};
+    int narm = sizeof(arm) / sizeof(*arm);
+    Point2f rleg [] {{300.f, 425.f}, {440.f, 410.f}, {430.f, 310.f}, {290.f, 330.f}};
+    int nrleg = sizeof(rleg) / sizeof(*rleg);
 
     Sketch sketch {width, height};
     sketch.drawCurve(ear, near, true);
@@ -37,7 +45,11 @@ void renderElephant () {
     sketch.drawCurve(trunkbot, ntrunkbot, false);
     sketch.drawCurve(trunktop, ntrunktop, false);
     sketch.drawCurve(trunknose, ntrunknose, true);
+    sketch.drawCurve(tline1, ntline1, false);
+    sketch.drawCurve(tline2, ntline2, false);
     sketch.drawCurve(body, nbody, true);
+    sketch.drawCurve(arm, narm, true);
+    sketch.drawCurve(rleg, nrleg, true);
     sketch.write();
 }
 
