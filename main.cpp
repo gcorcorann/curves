@@ -2,22 +2,25 @@
 
 void renderElephant () {
     int width = 600;
-    int height = 800;
-    Point2f ear [] {{85.f, 705.f}, {240.f, 695.f}, {235.f, 495.f}, {80.f, 505.f}};
-    Point2f head [] {{150.f, 700.f}, {375.f, 700.f}, {375.f, 550.f}, {150.f, 550.f}};
-    Point2f eye [] {{325.f, 675.f}, {350.f, 675.f}, {350.f, 600.f}, {325.f, 600.f}};
-    Point2f iris [] {{325.f, 647.5f}, {335.f, 647.5f}, {335.f, 627.5f}, {325.f, 627.5f}};
-    Point2f mouth [] {{300.f, 604.f}, {300.f, 565.f}, {325.f, 565.f}};
-    Point2f cheek [] {{285.f, 620.f}, {285.f, 585.f}, {315.f, 585.f}, {315.f, 620.f}};
-    Point2f eyebrow [] {{315.f, 660.f}, {315.f, 705.f}, {350.f, 705.f}, {339.f, 665.f}};
-    Point2f trunkbot [] {{325.f, 570.f}, {380.f, 575.f}, {440.f, 540.f}, {455.f, 500.f}};
-    Point2f trunktop [] {{350.f, 615.f}, {400.f, 605.f}, {465.f, 560.f}, {490.f, 500.f}};
-    Point2f trunknose [] {{446.f, 523.f}, {491.f, 532.f}, {491.f, 500.f}, {446.f, 490.f}};
-    Point2f tline1 [] {{403.f, 565.f}, {408.f, 585.f}, {433.f, 595.f}};
-    Point2f tline2 [] {{415.f, 565.f}, {420.f, 580.f}, {441.f, 588.5f}};
-    Point2f body [] {{200.f, 550.f}, {300.f, 550.f}, {380.f, 390.f}, {250.f, 300.f}, {120.f, 390.f}};
-    Point2f arm [] {{196.f, 505.f}, {265.f, 505.f}, {300.f, 395.f}, {230.f, 370.f}, {160.f, 395.f}};
-    Point2f rleg [] {{300.f, 425.f}, {440.f, 410.f}, {430.f, 310.f}, {290.f, 330.f}};
+    int height = 600;
+    Point2f ear [] {{85.f, 505.f}, {240.f, 495.f}, {235.f, 295.f}, {80.f, 305.f}};
+    Point2f head [] {{170.f, 500.f}, {355.f, 500.f}, {355.f, 350.f}, {170.f, 350.f}};
+    Point2f eye [] {{305.f, 475.f}, {330.f, 475.f}, {330.f, 400.f}, {305.f, 400.f}};
+    Point2f iris [] {{305.f, 447.5f}, {315.f, 447.5f}, {315.f, 427.5f}, {305.f, 427.5f}};
+    Point2f mouth [] {{280.f, 404.f}, {280.f, 365.f}, {305.f, 365.f}};
+    Point2f cheek [] {{265.f, 420.f}, {265.f, 385.f}, {295.f, 385.f}, {295.f, 420.f}};
+    Point2f eyebrow [] {{285.f, 440.f}, {285.f, 515.f}, {330.f, 505.f}, {319.f, 469.f}};
+    Point2f trunkbot [] {{315.f, 370.f}, {360.f, 375.f}, {420.f, 340.f}, {435.f, 300.f}};
+    Point2f trunktop [] {{330.f, 415.f}, {380.f, 405.f}, {445.f, 360.f}, {470.f, 300.f}};
+    Point2f trunknose [] {{426.f, 323.f}, {471.f, 332.f}, {471.f, 300.f}, {426.f, 290.f}};
+    Point2f tline1 [] {{383.f, 365.f}, {388.f, 385.f}, {413.f, 395.f}};
+    Point2f tline2 [] {{395.f, 365.f}, {400.f, 380.f}, {421.f, 388.5f}};
+    Point2f body [] {{200.f, 350.f}, {300.f, 350.f}, {380.f, 190.f}, {250.f, 100.f}, {120.f, 190.f}};
+    Point2f arm [] {{196.f, 305.f}, {265.f, 305.f}, {300.f, 195.f}, {230.f, 170.f}, {160.f, 195.f}};
+    Point2f rleg [] {{300.f, 225.f}, {440.f, 210.f}, {430.f, 110.f}, {290.f, 130.f}};
+    Point2f lleg [] {{320.f, 232.f}, {387.f, 257.f}, {455.f, 217.f}, {417.f, 130.f}};
+    Point2f hair1 [] {{265.f, 472.f}, {250.f, 530.f}, {270.f, 550.f}, {290.f, 550.f}};
+    Point2f hair2 [] {{270.f, 482.f}, {265.f, 520.f}, {280.f, 535.f}, {290.f, 535.f}};
 
     Part parts [] {{ear, sizeof(ear) / sizeof(*ear), true},
                    {head, sizeof(head) / sizeof(*head), true},
@@ -33,7 +36,10 @@ void renderElephant () {
                    {tline2, sizeof(tline2) / sizeof(*tline2), false},
                    {body, sizeof(body) / sizeof(*body), true},
                    {arm, sizeof(arm) / sizeof(*arm), true},
-                   {rleg, sizeof(rleg) / sizeof(*rleg), true}};
+                   {rleg, sizeof(rleg) / sizeof(*rleg), true},
+                   {lleg, sizeof(lleg) / sizeof(*lleg), false},
+                   {hair1, sizeof(hair1) / sizeof(*hair1), false},
+                   {hair2, sizeof(hair2) / sizeof(*hair2), false}};
 
     Sketch sketch {width, height};
     for (int i = 0; i < sizeof(parts) / sizeof(*parts); i++) {
