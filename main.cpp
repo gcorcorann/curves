@@ -29,6 +29,11 @@ void renderElephant () {
     Point2f t3 [] {{104.f, 175.f}, {104.f, 145.f}, {125.f, 145.f}, {127.f, 183.f}};
     Point2f f1 [] {{418.f, 120.f}, {380.f, 120.f}, {390.f, 200.f}, {434.f, 212.f}};
     Point2f f2 [] {{415.f, 205.f}, {410.f, 210.f}, {420.f, 240.f}, {430.f, 230.f}};
+    Point2f rl1 [] {{403.f, 185.5f}, {380.f, 190.f}, {385.f, 215.f}, {410.f, 210.f}};
+    Point2f rl2 [] {{400.f, 162.f}, {369.f, 167.f}, {377.f, 191.f}, {403.f, 183.f}};
+    Point2f ll1 [] {{425.f, 223}, {400.f, 228.f}, {405.f, 245.f}, {430.f, 235.f}};
+    Point2f ll2 [] {{425.f, 205}, {395.f, 210.f}, {400.f, 230.f}, {430.f, 220.f}};
+
 
     Part parts [] {{ear, sizeof(ear) / sizeof(*ear), true},
                    {head, sizeof(head) / sizeof(*head), true},
@@ -56,7 +61,11 @@ void renderElephant () {
                    {t2, sizeof(t2) / sizeof(*t2), false},
                    {t3, sizeof(t3) / sizeof(*t3), false},
                    {f1, sizeof(f1) / sizeof(*f1), false},
-                   {f2, sizeof(f2) / sizeof(*f2), false}};
+                   {f2, sizeof(f2) / sizeof(*f2), false},
+                   {rl1, sizeof(rl1) / sizeof(*rl1), false},
+                   {rl2, sizeof(rl2) / sizeof(*rl2), false},
+                   {ll1, sizeof(ll1) / sizeof(*ll1), false},
+                   {ll2, sizeof(ll2) / sizeof(*ll2), false}};
 
     Sketch sketch {width, height};
     for (int i = 0; i < sizeof(parts) / sizeof(*parts); i++) {
