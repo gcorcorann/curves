@@ -1,5 +1,4 @@
 #include "sketch.h"
-
 void renderElephant () {
     int width = 600;
     int height = 600;
@@ -21,6 +20,15 @@ void renderElephant () {
     Point2f lleg [] {{320.f, 232.f}, {387.f, 257.f}, {455.f, 217.f}, {417.f, 130.f}};
     Point2f hair1 [] {{265.f, 472.f}, {250.f, 530.f}, {270.f, 550.f}, {290.f, 550.f}};
     Point2f hair2 [] {{270.f, 482.f}, {265.f, 520.f}, {280.f, 535.f}, {290.f, 535.f}};
+    Point2f h1 [] {{188.f, 180.f}, {188.f, 197.f}, {214.f, 197.f}, {214.f, 162.f}};
+    Point2f h2 [] {{214.f, 160.f}, {214.f, 202.f}, {246.f, 202.f}, {246.f, 160.f}};
+    Point2f h3 [] {{246.f, 160.f}, {246.f, 197.f}, {274.f, 197.f}, {274.f, 177.f}};
+    Point2f tail [] {{125.f, 183.f}, {172.f, 173.f}, {172.f, 148.f}, {125.f, 158.f}};
+    Point2f t1 [] {{100.f, 165.f}, {110.f, 195.f}, {127.f, 190.f}, {127.f, 160.f}};
+    Point2f t2 [] {{115.f, 160.f}, {90.f, 160.f}, {90.f, 180.f}, {120.f, 180.f}};
+    Point2f t3 [] {{104.f, 175.f}, {104.f, 145.f}, {125.f, 145.f}, {127.f, 183.f}};
+    Point2f f1 [] {{418.f, 120.f}, {380.f, 120.f}, {390.f, 200.f}, {434.f, 212.f}};
+    Point2f f2 [] {{415.f, 205.f}, {410.f, 210.f}, {420.f, 240.f}, {430.f, 230.f}};
 
     Part parts [] {{ear, sizeof(ear) / sizeof(*ear), true},
                    {head, sizeof(head) / sizeof(*head), true},
@@ -39,7 +47,16 @@ void renderElephant () {
                    {rleg, sizeof(rleg) / sizeof(*rleg), true},
                    {lleg, sizeof(lleg) / sizeof(*lleg), false},
                    {hair1, sizeof(hair1) / sizeof(*hair1), false},
-                   {hair2, sizeof(hair2) / sizeof(*hair2), false}};
+                   {hair2, sizeof(hair2) / sizeof(*hair2), false},
+                   {h1, sizeof(h1) / sizeof(*h1), false},
+                   {h2, sizeof(h2) / sizeof(*h2), false},
+                   {h3, sizeof(h3) / sizeof(*h3), false},
+                   {tail, sizeof(tail) / sizeof(*tail), true},
+                   {t1, sizeof(t1) / sizeof(*t1), false},
+                   {t2, sizeof(t2) / sizeof(*t2), false},
+                   {t3, sizeof(t3) / sizeof(*t3), false},
+                   {f1, sizeof(f1) / sizeof(*f1), false},
+                   {f2, sizeof(f2) / sizeof(*f2), false}};
 
     Sketch sketch {width, height};
     for (int i = 0; i < sizeof(parts) / sizeof(*parts); i++) {
